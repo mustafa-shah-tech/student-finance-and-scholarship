@@ -124,6 +124,7 @@ To keep this tool 100% free for students, the platform is designed to be support
 - [x] Add branded favicon
 - [x] Add SEO meta tags and keywords
 - [x] Create sitemap.xml and robots.txt
+- [x] Inject JSON-LD Schema on tools pages
 - [ ] Submit to Google Search Console
 - [ ] Apply for Google AdSense
 - [ ] Reach 100 daily visitors
