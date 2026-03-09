@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadline Tracker - Pakistan Student Finance Hub</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #1A56A0;
+            --accent-light-blue: #E8F0FA;
+            --bg-color: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555555;
+            --success-green: #1A8765;
+            --warning-orange: #B8860B;
+            --danger-red: #C0392B;
+            --border-color: #E2E8F0;
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: var(--primary-blue) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .card-custom {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            border: none;
+            margin-bottom: 24px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #144380;
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            background-color: white;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: 600;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 6px 16px;
+            background: white;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .deadline-row {
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: white;
+            transition: transform 0.2s;
+        }
+
+        .deadline-row:hover {
+            transform: translateX(5px);
+            border-color: var(--primary-blue);
+        }
+
+        @media (min-width: 768px) {
+            .deadline-row {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .deadline-info {
+            flex: 1;
+        }
+
+        .deadline-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 4px;
+        }
+
+        .deadline-funder {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .deadline-amount {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .deadline-timer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            min-width: 250px;
+            justify-content: flex-start;
+        }
+
+        @media (min-width: 768px) {
+            .deadline-timer {
+                justify-content: flex-end;
+                margin-top: 0;
+            }
+        }
+
+        .days-badge {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+
+        .deadline-urgent {
+            background-color: #FDECEA;
+            color: var(--danger-red);
+            border: 1px solid #F5C6CB;
+        }
+
+        .deadline-soon {
+            background-color: #FFF3CD;
+            color: var(--warning-orange);
+            border: 1px solid #FFEEBA;
+        }
+
+        .deadline-ok {
+            background-color: #E6F4EA;
+            color: var(--success-green);
+            border: 1px solid #C3E6CB;
+        }
+
+        .deadline-expired {
+            background-color: #E2E8F0;
+            color: var(--text-secondary);
+            border: 1px solid #CBD5E0;
+        }
+
+        .adsense-placeholder {
+            background-color: #E2E8F0;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 8px;
+            font-weight: 500;
+            max-width: 900px;
+        }
+
+        .email-signup {
+            background-color: var(--accent-light-blue);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #1A1A2E;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: #A0AEC0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2D3748;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="index.html">PakStudentFinance</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-toggle="target="
+                #navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="scholarships.html">Scholarships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eligibility-checker.html">Eligibility Checker</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="cgpa-calculator.html">CGPA Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="loan-calculator.html">Loan Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deadlines.html">Deadlines</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ADSENSE SLOT: Replace with your AdSense code after approval -->
+    <div class="container">
+        <div class="adsense-placeholder" style="margin: 30px auto 20px auto; padding: 25px 20px;">Advertisement</div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+                <h1 style="color: var(--primary-blue);">Deadline Tracker</h1>
+                <p class="text-secondary">Track upcoming scholarship deadlines so you never miss an opportunity.</p>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <a href="#alerts" class="btn btn-outline-primary">Get Email Alerts</a>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 mb-4" id="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="merit">Merit-Based</button>
+            <button class="filter-btn" data-filter="need-based">Need-Based</button>
+            <button class="filter-btn" data-filter="loan">Loans</button>
+            <button class="filter-btn" data-filter="international">International</button>
+        </div>
+
+        <div id="active-deadlines">
+            <!-- Active scholarships populated via JS -->
+        </div>
+
+        <div class="accordion mt-5" id="expiredAccordion">
+            <div class="accordion-item" style="border: 1px solid var(--border-color); border-radius: 8px;">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-toggle="target=" #expired-list"
+                        style="background-color: #F8FAFC; color: var(--text-secondary);">
+                        Expired / Closed Scholarships
+                    </button>
+                </h2>
+                <div id="expired-list" class="accordion-collapse collapse" data-bs-parent="#expiredAccordion">
+                    <div class="accordion-body bg-white p-3" id="expired-container">
+                        <!-- Expired items populated via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Signup Section -->
+        <div class="email-signup mt-5" id="alerts">
+            <h3 class="mb-2">Never Miss a Deadline</h3>
+            <p class="text-secondary mb-4 mx-auto" style="max-width: 600px;">Join our mailing list and we'll send you an
+                alert 7 days before major Pakistan scholarship deadlines approach.</p>
+
+            <!-- Integration Comment: Use Mailchimp Embed Form or Tally.so iframe here -->
+            <form id="subscribe-form" class="mx-auto d-flex flex-column flex-sm-row gap-2 justify-content-center"
+                style="max-width: 500px;"
+                onsubmit="event.preventDefault(); document.getElementById('sub-msg').style.display='block';">
+                <input type="email" class="form-control" placeholder="Enter your email address" required
+                    style="border-radius: 8px; padding: 12px 16px;">
+                <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Notify Me</button>
+            </form>
+            <div id="sub-msg" class="text-success mt-3 fw-bold" style="display: none;">Thanks! We'll alert you when new
+                scholarships are added.</div>
+        </div>
+    </div>
+
+    <!-- ADSENSE SLOT: Replace with your AdSense code after approval -->
+    <div class="container">
+        <div class="adsense-placeholder" style="margin: 10px auto 40px auto; padding: 25px 20px;">Advertisement</div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="logo mb-3">PakStudentFinance</h3>
+                    <p style="color: #A0AEC0; font-size: 0.95rem;">Free tools for Pakistani students. No signup
+                        required.</p>
+                </div>
+                <!-- Standard Footer -->
+                <div class="col-lg-8 col-md-6 d-flex gap-5 justify-content-md-end">
+                    <div>
+                        <h5 class="mb-3">Tools</h5>
+                        <a href="eligibility-checker.html">Eligibility Checker</a>
+                        <a href="cgpa-calculator.html">CGPA Calculator</a>
+                        <a href="loan-calculator.html">Loan Calculator</a>
+                    </div>
+                    <div>
+                        <h5 class="mb-3">Legal</h5>
+                        <a href="about.html">About</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-disclaimer text-center">
+                This platform provides general information only. Always verify details directly with scholarship
+                providers.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scholarships = [
+            { id: 1, name: "HEC Need-Based Scholarship", funder: "Higher Education Commission (HEC)", amount: "PKR 40,000–80,000/year", type: "need-based", tags: ["hec", "need-based"], deadline: "2025-03-31", applyURL: "https://www.hec.gov.pk/english/scholarshipsgrants/Pages/NBS.aspx" },
+            { id: 2, name: "HEC Merit Scholarship (USEFP)", funder: "HEC / USEFP", amount: "PKR 20,000–50,000/semester", type: "merit", tags: ["hec", "merit"], deadline: "2025-04-15", applyURL: "https://www.hec.gov.pk" },
+            { id: 3, name: "Punjab Educational Endowment Fund (PEEF)", funder: "Government of Punjab", amount: "PKR 30,000–60,000/year", type: "need-based", tags: ["need-based"], deadline: "2025-05-01", applyURL: "https://peef.org.pk" },
+            { id: 4, name: "Sindh Education Foundation Scholarship", funder: "Government of Sindh", amount: "PKR 25,000–45,000/year", type: "need-based", tags: ["need-based"], deadline: "2025-04-30", applyURL: "https://sef.org.pk" },
+            { id: 5, name: "PM's Youth Business & Agriculture Loan", funder: "Government of Pakistan", amount: "PKR 100K–500K (loan)", type: "loan", tags: ["loan"], deadline: "2025-06-30", applyURL: "https://pmyp.gov.pk" },
+            { id: 6, name: "Aga Khan Foundation Scholarship", funder: "Aga Khan Foundation", amount: "Full tuition + stipend", type: "need-merit", tags: ["international", "need-merit"], deadline: "2025-03-15", applyURL: "https://www.akdn.org" },
+            { id: 7, name: "Ehsaas Undergraduate Scholarship", funder: "Government of Pakistan", amount: "PKR 20,000/sem + acc", type: "need-based", tags: ["need-based"], deadline: "2025-08-01", applyURL: "https://ehsaas.nadra.gov.pk" },
+            { id: 8, name: "Balochistan Educational Scholarship", funder: "Gov of Balochistan", amount: "PKR 30,000–70,000/year", type: "need-based", tags: ["need-based"], deadline: "2025-05-15", applyURL: "https://www.balochistan.gov.pk" },
+            { id: 9, name: "LUMS National Outreach Program", funder: "LUMS University", amount: "Full tuition + laptop", type: "need-based", tags: ["need-based"], deadline: "2025-02-28", applyURL: "https://nop.lums.edu.pk" },
+            { id: 10, name: "IBA Karachi Need-Based Scholarship", funder: "IBA Karachi", amount: "50–100% tuition waiver", type: "need-based", tags: ["need-based"], deadline: "2025-03-20", applyURL: "https://www.iba.edu.pk/financial_aid.php" },
+            { id: 11, name: "KPK Higher Education Scholarship", funder: "Government of KPK", amount: "PKR 30,000–60,000/year", type: "merit", tags: ["merit"], deadline: "2025-06-01", applyURL: "https://www.kpkscholarships.com" },
+            { id: 12, name: "NUST Financial Aid Scholarship", funder: "NUST University", amount: "25–100% tuition waiver", type: "need-merit", tags: ["need-merit"], deadline: "2025-07-15", applyURL: "https://www.nust.edu.pk" },
+            { id: 13, name: "Commonwealth Scholarship (Pakistan)", funder: "Commonwealth (UK)", amount: "Full funding (UK study)", type: "merit", tags: ["international", "merit"], deadline: "2025-10-15", applyURL: "https://cscuk.fcdo.gov.uk/apply/" },
+            { id: 14, name: "Fulbright Pakistan Scholarship", funder: "US Embassy / USEFP", amount: "Full funding (USA study)", type: "merit", tags: ["international", "merit"], deadline: "2025-05-15", applyURL: "https://www.usefpakistan.org" },
+            { id: 15, name: "Dawood Global Foundation Scholarship", funder: "Dawood Foundation", amount: "PKR 60K–120K/year", type: "need-merit", tags: ["need-merit"], deadline: "2025-04-01", applyURL: "https://www.dawoodglobal.com/foundation" },
+            // Add a mock expired one for testing display
+            { id: 16, name: "Past Year Endowment Grant", funder: "Test Funder", amount: "PKR 20,000", type: "merit", tags: ["merit"], deadline: "2023-12-31", applyURL: "#" }
+        ];
+
+        function getDaysRemaining(deadlineStr) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const deadline = new Date(deadlineStr);
+            const diff = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+            return diff;
+        }
+
+        function renderList(filter = 'all') {
+            const activeContainer = document.getElementById('active-deadlines');
+            const expiredContainer = document.getElementById('expired-container');
+
+            activeContainer.innerHTML = '';
+            expiredContainer.innerHTML = '';
+
+            const activeList = [];
+            const expiredList = [];
+
+            scholarships.forEach(s => {
+                // Filter check
+                if (filter !== 'all') {
+                    if (filter === 'international' && !s.tags.includes('international')) return;
+                    if (filter === 'loan' && s.type !== 'loan') return;
+                    if (filter === 'merit' && !s.type.includes('merit') && !s.tags.includes('merit')) return;
+                    if (filter === 'need-based' && !s.type.includes('need')) return;
+                }
+
+                const days = getDaysRemaining(s.deadline);
+                s.daysRemaining = days;
+
+                if (days < 0) expiredList.push(s);
+                else activeList.push(s);
+            });
+
+            activeList.sort((a, b) => a.daysRemaining - b.daysRemaining);
+            expiredList.sort((a, b) => b.daysRemaining - a.daysRemaining); // Most recently expired first
+
+            if (activeList.length === 0) {
+                activeContainer.innerHTML = `<div class="p-4 text-center text-secondary border rounded bg-white">No upcoming deadlines found for this category.</div>`;
+            } else {
+                activeList.forEach(s => {
+                    let badgeClass = 'deadline-ok';
+                    if (s.daysRemaining < 7) badgeClass = 'deadline-urgent';
+                    else if (s.daysRemaining <= 30) badgeClass = 'deadline-soon';
+
+                    const row = `
+                        <div class="deadline-row">
+                            <div class="deadline-info">
+                                <div class="deadline-title">${s.name}</div>
+                                <div class="deadline-funder">${s.funder}</div>
+                                <div class="deadline-amount">${s.amount}</div>
+                            </div>
+                            <div class="deadline-timer">
+                                <div class="text-end me-3">
+                                    <div class="fw-bold" style="color:var(--text-primary);">${new Date(s.deadline).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+                                    <a href="${s.applyURL}" target="_blank" class="text-decoration-none" style="font-size:0.85rem; color:var(--primary-blue);">Apply Info &rarr;</a>
+                                </div>
+                                <div class="days-badge ${badgeClass}">${s.daysRemaining} days left</div>
+                            </div>
+                        </div>
+                    `;
+                    activeContainer.innerHTML += row;
+                });
+            }
+
+            if (expiredList.length === 0) {
+                expiredContainer.innerHTML = '<p class="text-secondary mb-0">No expired scholarships in this category.</p>';
+            } else {
+                expiredList.forEach(s => {
+                    const row = `
+                        <div class="deadline-row opacity-75">
+                            <div class="deadline-info">
+                                <div class="deadline-title" style="color:var(--text-secondary);">${s.name}</div>
+                                <div class="deadline-funder">${s.funder}</div>
+                            </div>
+                            <div class="deadline-timer">
+                                <div class="fw-bold me-3 text-secondary">${new Date(s.deadline).toLocaleDateString('en-GB')}</div>
+                                <div class="days-badge deadline-expired">Closed</div>
+                            </div>
+                        </div>
+                    `;
+                    expiredContainer.innerHTML += row;
+                });
+            }
+        }
+
+        // Filter Logic
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderList(this.dataset.filter);
+            });
+        });
+
+        // Initialize
+        renderList();
+    </script>
+</body>
+
+</html>

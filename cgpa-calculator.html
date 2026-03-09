@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator - Pakistan Student Finance Hub</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #1A56A0;
+            --accent-light-blue: #E8F0FA;
+            --bg-color: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555555;
+            --success-green: #1A8765;
+            --warning-orange: #B8860B;
+            --danger-red: #C0392B;
+            --border-color: #E2E8F0;
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: var(--primary-blue) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .card-custom {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            border: none;
+            margin-bottom: 24px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #144380;
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            background-color: white;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: 600;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-outline-danger {
+            border: 2px solid var(--danger-red);
+            color: var(--danger-red);
+            background-color: white;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: 600;
+        }
+
+        .btn-outline-danger:hover {
+            background-color: var(--danger-red);
+            color: white;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 14px;
+        }
+
+        .result-box {
+            background-color: var(--accent-light-blue);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .result-box h4 {
+            margin-bottom: 0px;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+        }
+
+        .result-value-txt {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .course-row {
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .course-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .adsense-placeholder {
+            background-color: #E2E8F0;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 8px;
+            font-weight: 500;
+            max-width: 900px;
+        }
+
+        footer {
+            background-color: #1A1A2E;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: #A0AEC0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2D3748;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="index.html">PakStudentFinance</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-toggle="target="
+                #navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="scholarships.html">Scholarships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eligibility-checker.html">Eligibility Checker</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="cgpa-calculator.html">CGPA Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="loan-calculator.html">Loan Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deadlines.html">Deadlines</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ADSENSE SLOT: Replace with your AdSense code after approval -->
+    <div class="container">
+        <div class="adsense-placeholder" style="margin: 30px auto 20px auto; padding: 25px 20px;">Advertisement</div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row text-center mb-4">
+            <h1 style="color: var(--primary-blue);">CGPA Calculator</h1>
+            <p class="text-secondary">Calculate your semester GPA, convert grades, and plan your target goals.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card-custom">
+                    <h3 class="mb-4">Semester GPA/CGPA Calculator</h3>
+
+                    <div class="row mb-2 fw-bold d-none d-md-flex">
+                        <div class="col-md-5">Course Name</div>
+                        <div class="col-md-3">Credit Hours</div>
+                        <div class="col-md-3">Grade</div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                    <div id="course-list">
+                        <!-- Rows rendered via JS -->
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button class="btn btn-outline-primary" onclick="addRow()">+ Add Course</button>
+                        <button class="btn btn-primary" onclick="calculateGPA()">Calculate</button>
+                    </div>
+
+                    <div id="gpa-result-container" class="mt-4" style="display: none;">
+                        <div class="result-box text-center">
+                            <p class="text-secondary mb-1">Your Total GPA</p>
+                            <h4 id="gpa-out">3.00</h4>
+                            <div class="mt-3 text-secondary" style="font-size: 0.95rem;">
+                                Equivalent Percentage: <span id="gpa-perc-out" class="result-value-txt">75%</span><br>
+                                Classification: <span id="gpa-class-out" class="result-value-txt"
+                                    style="color:var(--primary-blue);">Merit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card-custom">
+                    <h4 class="mb-3">Percentage / CGPA Converter</h4>
+                    <form id="converter-form" onsubmit="event.preventDefault(); convertVals();">
+                        <div class="mb-3">
+                            <label class="form-label">CGPA (out of 4.0)</label>
+                            <input type="number" step="0.01" max="4.0" min="0" class="form-control" id="conv-cgpa">
+                        </div>
+                        <div class="mb-3 text-center text-secondary"><strong>OR</strong></div>
+                        <div class="mb-3">
+                            <label class="form-label">Percentage (%)</label>
+                            <input type="number" step="0.01" max="100" min="0" class="form-control" id="conv-perc">
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary w-100">Convert</button>
+                    </form>
+                </div>
+
+                <div class="card-custom">
+                    <h4 class="mb-3">Target CGPA Planner</h4>
+                    <form id="target-form" onsubmit="event.preventDefault(); planTarget();">
+                        <div class="mb-3">
+                            <label class="form-label">Current CGPA</label>
+                            <input type="number" step="0.01" class="form-control" id="t-curr-cgpa" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Current Total Credit Hrs</label>
+                            <input type="number" class="form-control" id="t-curr-cr" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Target CGPA</label>
+                            <input type="number" step="0.01" class="form-control" id="t-target-cgpa" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Remaining Credit Hrs</label>
+                            <input type="number" class="form-control" id="t-rem-cr" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Calculate Required</button>
+                    </form>
+                    <div id="target-result" class="mt-3 text-center font-weight-bold" style="font-size: 0.95rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADSENSE SLOT: Replace with your AdSense code after approval -->
+    <div class="container">
+        <div class="adsense-placeholder" style="margin: 10px auto 40px auto; padding: 25px 20px;">Advertisement</div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="logo mb-3">PakStudentFinance</h3>
+                    <p style="color: #A0AEC0; font-size: 0.95rem;">Free tools for Pakistani students. No signup
+                        required.</p>
+                </div>
+                <!-- Standard Footer -->
+                <div class="col-lg-8 col-md-6 d-flex gap-5 justify-content-md-end">
+                    <div>
+                        <h5 class="mb-3">Tools</h5>
+                        <a href="eligibility-checker.html">Eligibility Checker</a>
+                        <a href="cgpa-calculator.html">CGPA Calculator</a>
+                        <a href="loan-calculator.html">Loan Calculator</a>
+                    </div>
+                    <div>
+                        <h5 class="mb-3">Legal</h5>
+                        <a href="about.html">About</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-disclaimer text-center">
+                This platform provides general information only. Always verify details directly with scholarship
+                providers.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const gradeMapping = {
+            "A+": 4.0, "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7,
+            "C+": 2.3, "C": 2.0, "C-": 1.7, "D": 1.0, "F": 0.0
+        };
+
+        let rowCount = 0;
+
+        function addRow() {
+            if (rowCount >= 30) return alert("Maximum 30 courses allowed.");
+
+            const list = document.getElementById('course-list');
+            const row = document.createElement('div');
+            row.className = "row course-row align-items-center g-2";
+            row.id = `row-${rowCount}`;
+
+            let gradeOptions = `<option value="" disabled selected>Select</option>`;
+            for (let g in gradeMapping) {
+                gradeOptions += `<option value="${gradeMapping[g]}">${g}</option>`;
+            }
+
+            row.innerHTML = `
+                <div class="col-12 col-md-5">
+                    <input type="text" class="form-control" placeholder="Course Name (Optional)">
+                </div>
+                <div class="col-6 col-md-3">
+                    <input type="number" class="form-control cr-input" placeholder="Credit Hrs" min="0" step="1" required>
+                </div>
+                <div class="col-4 col-md-3">
+                    <select class="form-select gd-input" required>
+                        ${gradeOptions}
+                    </select>
+                </div>
+                <div class="col-2 col-md-1 text-center">
+                    <button class="btn btn-outline-danger btn-sm w-100" onclick="removeRow(${rowCount})">&times;</button>
+                </div>
+            `;
+            list.appendChild(row);
+            rowCount++;
+        }
+
+        function removeRow(id) {
+            const row = document.getElementById(`row-${id}`);
+            if (row) row.remove();
+        }
+
+        function calculateGPA() {
+            const crInputs = document.querySelectorAll('.cr-input');
+            const gdInputs = document.querySelectorAll('.gd-input');
+
+            let totalQP = 0;
+            let totalCr = 0;
+
+            for (let i = 0; i < crInputs.length; i++) {
+                const cr = parseFloat(crInputs[i].value);
+                const gd = parseFloat(gdInputs[i].value);
+
+                if (!isNaN(cr) && !isNaN(gd)) {
+                    totalCr += cr;
+                    totalQP += (cr * gd);
+                }
+            }
+
+            if (totalCr > 0) {
+                const gpa = totalQP / totalCr;
+                const perc = gpa * 25;
+                let classification = "Fail";
+                if (gpa >= 3.5) classification = "Distinction";
+                else if (gpa >= 3.0) classification = "Merit";
+                else if (gpa >= 2.0) classification = "Pass";
+
+                document.getElementById('gpa-out').innerText = gpa.toFixed(2);
+                document.getElementById('gpa-perc-out').innerText = perc.toFixed(2) + "%";
+                const classOut = document.getElementById('gpa-class-out');
+                classOut.innerText = classification;
+
+                if (classification === 'Fail') classOut.style.color = 'var(--danger-red)';
+                else if (classification === 'Distinction') classOut.style.color = 'var(--success-green)';
+                else classOut.style.color = 'var(--primary-blue)';
+
+                document.getElementById('gpa-result-container').style.display = "block";
+            }
+        }
+
+        // Converter function
+        document.getElementById('conv-cgpa').addEventListener('input', function () {
+            if (this.value) {
+                document.getElementById('conv-perc').value = (parseFloat(this.value) * 25).toFixed(2);
+            } else {
+                document.getElementById('conv-perc').value = '';
+            }
+        });
+        document.getElementById('conv-perc').addEventListener('input', function () {
+            if (this.value) {
+                document.getElementById('conv-cgpa').value = (parseFloat(this.value) / 25).toFixed(2);
+            } else {
+                document.getElementById('conv-cgpa').value = '';
+            }
+        });
+
+        // Target Planner
+        function planTarget() {
+            const currentCgpa = parseFloat(document.getElementById('t-curr-cgpa').value);
+            const currentCr = parseFloat(document.getElementById('t-curr-cr').value);
+            const targetCgpa = parseFloat(document.getElementById('t-target-cgpa').value);
+            const remCr = parseFloat(document.getElementById('t-rem-cr').value);
+            const resBox = document.getElementById('target-result');
+
+            if (isNaN(currentCgpa) || isNaN(currentCr) || isNaN(targetCgpa) || isNaN(remCr)) return;
+
+            const totalReqQP = targetCgpa * (currentCr + remCr);
+            const currentQP = currentCgpa * currentCr;
+            const requiredQP = totalReqQP - currentQP;
+            const requiredCgpaList = requiredQP / remCr;
+
+            if (requiredCgpaList > 4.0) {
+                const maxPossible = ((currentQP + (4.0 * remCr)) / (currentCr + remCr)).toFixed(2);
+                resBox.innerHTML = `<div class="p-2" style="background-color:#FDECEA; color:var(--danger-red); border-radius:8px;">This target cannot be reached with remaining credits. Consider aiming for ${maxPossible} maximum instead.</div>`;
+            } else if (requiredCgpaList <= 0) {
+                resBox.innerHTML = `<div class="p-2" style="background-color:#E6F4EA; color:var(--success-green); border-radius:8px;">You have already secured this target! You need less than 0 GPA in remaining courses to maintain this.</div>`;
+            } else {
+                resBox.innerHTML = `<div class="p-2" style="background-color:var(--accent-light-blue); color:var(--primary-blue); border-radius:8px;">You need an average of <strong>${requiredCgpaList.toFixed(2)} GPA</strong> in your remaining ${remCr} credit hours to reach your target.</div>`;
+            }
+        }
+
+        // Add default rows
+        addRow(); addRow(); addRow(); addRow(); addRow();
+    </script>
+</body>
+
+</html>

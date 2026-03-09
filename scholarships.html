@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Scholarships - Pakistan Student Finance Hub</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #1A56A0;
+            --accent-light-blue: #E8F0FA;
+            --bg-color: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555555;
+            --success-green: #1A8765;
+            --warning-orange: #B8860B;
+            --danger-red: #C0392B;
+            --border-color: #E2E8F0;
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: var(--primary-blue) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .card-custom {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            border: none;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #144380;
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            background-color: white;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 14px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.25rem rgba(26, 86, 160, 0.25);
+        }
+
+        .badge-type {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .badge-need-based {
+            background-color: var(--accent-light-blue);
+            color: var(--primary-blue);
+        }
+
+        .badge-merit {
+            background-color: #E6F4EA;
+            color: var(--success-green);
+        }
+
+        .badge-loan {
+            background-color: #FFF3CD;
+            color: var(--warning-orange);
+        }
+
+        .badge-need-merit {
+            background-color: #F3E8FF;
+            color: #6B21A8;
+        }
+
+        .scholarship-price {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin: 10px 0;
+        }
+
+        .scholarship-deadline {
+            color: var(--danger-red);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .adsense-placeholder {
+            background-color: #E2E8F0;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 8px;
+            font-weight: 500;
+            max-width: 900px;
+        }
+
+        footer {
+            background-color: #1A1A2E;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: #A0AEC0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2D3748;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="index.html">PakStudentFinance</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-toggle="target="
+                #navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="scholarships.html"
+                            style="color:var(--primary-blue);">Scholarships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eligibility-checker.html">Eligibility Checker</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="cgpa-calculator.html">CGPA Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="loan-calculator.html">Loan Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deadlines.html">Deadlines</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ADSENSE SLOT: Replace with your AdSense code after approval -->
+    <div class="container">
+        <div class="adsense-placeholder" style="margin: 30px auto 20px auto; padding: 25px 20px;">Advertisement</div>
+    </div>
+
+    <div class="container py-4 mb-5">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 style="color: var(--primary-blue);">All Scholarships</h1>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">Browse our full database of financial aid
+                    opportunities for Pakistani students. Updated regularly.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Sidebar Filters -->
+            <div class="col-lg-3">
+                <div class="card-custom" style="padding: 24px; height: auto; position: sticky; top: 100px;">
+                    <h5 class="mb-3">Filters</h5>
+
+                    <div class="mb-3">
+                        <label class="form-label text-secondary" style="font-size:0.9rem;">Search Name</label>
+                        <input type="text" class="form-control" id="f-search" placeholder="e.g. HEC, Merit...">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-secondary" style="font-size:0.9rem;">Degree Level</label>
+                        <select class="form-select" id="f-degree">
+                            <option value="all">Every Level</option>
+                            <option value="bachelor">Bachelor's</option>
+                            <option value="master">Master's</option>
+                            <option value="phd">PhD</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-secondary" style="font-size:0.9rem;">Type</label>
+                        <select class="form-select" id="f-type">
+                            <option value="all">Any Type</option>
+                            <option value="need">Need-Based</option>
+                            <option value="merit">Merit-Based</option>
+                            <option value="loan">Loans</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-secondary" style="font-size:0.9rem;">Location</label>
+                        <select class="form-select" id="f-location">
+                            <option value="all">All Pakistan / International</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="sindh">Sindh</option>
+                            <option value="kpk">KPK</option>
+                            <option value="balochistan">Balochistan</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary w-100" id="reset-filters">Reset Filters</button>
+
+                    <div class="mt-4 pt-3 border-top text-center">
+                        <p style="font-size:0.85rem; color: var(--text-secondary);">Want personalized results matching
+                            your profile?</p>
+                        <a href="eligibility-checker.html" class="btn btn-outline-primary btn-sm w-100">Use Eligibility
+                            Checker</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scholarship Grid -->
+            <div class="col-lg-9">
+                <div class="row g-4" id="scholarships-grid">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADSENSE SLOT: Replace with your AdSense code after approval -->
+    <div class="container">
+        <div class="adsense-placeholder" style="margin: 10px auto 40px auto; padding: 25px 20px;">Advertisement</div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="logo mb-3">PakStudentFinance</h3>
+                    <p style="color: #A0AEC0; font-size: 0.95rem;">Free tools for Pakistani students. No signup
+                        required.</p>
+                </div>
+                <!-- Standard Footer -->
+                <div class="col-lg-8 col-md-6 d-flex gap-5 justify-content-md-end">
+                    <div>
+                        <h5 class="mb-3">Tools</h5>
+                        <a href="eligibility-checker.html">Eligibility Checker</a>
+                        <a href="cgpa-calculator.html">CGPA Calculator</a>
+                        <a href="loan-calculator.html">Loan Calculator</a>
+                    </div>
+                    <div>
+                        <h5 class="mb-3">Legal</h5>
+                        <a href="about.html">About</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-disclaimer text-center">
+                This platform provides general information only. Always verify details directly with scholarship
+                providers.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scholarships = [
+            { id: 1, name: "HEC Need-Based Scholarship", funder: "Higher Education Commission (HEC)", amount: "PKR 40,000–80,000/year", type: "need-based", degreeLevel: ["bachelor", "master"], province: "all", tags: ["hec", "need-based"], deadline: "2025-03-31", applyURL: "https://www.hec.gov.pk/english/scholarshipsgrants/Pages/NBS.aspx" },
+            { id: 2, name: "HEC Merit Scholarship (USEFP)", funder: "HEC / USEFP", amount: "PKR 20,000–50,000/semester", type: "merit", degreeLevel: ["bachelor"], province: "all", tags: ["hec", "merit"], deadline: "2025-04-15", applyURL: "https://www.hec.gov.pk" },
+            { id: 3, name: "Punjab Educational Endowment Fund (PEEF)", funder: "Government of Punjab", amount: "PKR 30,000–60,000/year", type: "need-based", degreeLevel: ["bachelor", "master"], province: "punjab", tags: ["need-based"], deadline: "2025-05-01", applyURL: "https://peef.org.pk" },
+            { id: 4, name: "Sindh Education Foundation Scholarship", funder: "Government of Sindh", amount: "PKR 25,000–45,000/year", type: "need-based", degreeLevel: ["bachelor"], province: "sindh", tags: ["need-based"], deadline: "2025-04-30", applyURL: "https://sef.org.pk" },
+            { id: 5, name: "PM's Youth Business & Agriculture Loan", funder: "Government of Pakistan", amount: "PKR 100K–500K (loan)", type: "loan", degreeLevel: ["bachelor", "master"], province: "all", tags: ["loan"], deadline: "2025-06-30", applyURL: "https://pmyp.gov.pk" },
+            { id: 6, name: "Aga Khan Foundation Scholarship", funder: "Aga Khan Foundation", amount: "Full tuition + stipend", type: "need-merit", degreeLevel: ["master", "phd"], province: "all", tags: ["international", "need-merit"], deadline: "2025-03-15", applyURL: "https://www.akdn.org" },
+            { id: 7, name: "Ehsaas Undergraduate Scholarship", funder: "Government of Pakistan", amount: "PKR 20,000/sem + acc", type: "need-based", degreeLevel: ["bachelor"], province: "all", tags: ["need-based"], deadline: "2025-08-01", applyURL: "https://ehsaas.nadra.gov.pk" },
+            { id: 8, name: "Balochistan Educational Scholarship", funder: "Gov of Balochistan", amount: "PKR 30,000–70,000/year", type: "need-based", degreeLevel: ["bachelor", "master"], province: "balochistan", tags: ["need-based"], deadline: "2025-05-15", applyURL: "https://www.balochistan.gov.pk" },
+            { id: 9, name: "LUMS National Outreach Program", funder: "LUMS University", amount: "Full tuition + laptop", type: "need-based", degreeLevel: ["bachelor"], province: "all", tags: ["need-based"], deadline: "2025-02-28", applyURL: "https://nop.lums.edu.pk" },
+            { id: 10, name: "IBA Karachi Need-Based Scholarship", funder: "IBA Karachi", amount: "50–100% tuition waiver", type: "need-based", degreeLevel: ["bachelor", "master"], province: "all", tags: ["need-based"], deadline: "2025-03-20", applyURL: "https://www.iba.edu.pk/financial_aid.php" },
+            { id: 11, name: "KPK Higher Education Scholarship", funder: "Government of KPK", amount: "PKR 30,000–60,000/year", type: "merit", degreeLevel: ["bachelor", "master"], province: "kpk", tags: ["merit"], deadline: "2025-06-01", applyURL: "https://www.kpkscholarships.com" },
+            { id: 12, name: "NUST Financial Aid Scholarship", funder: "NUST University", amount: "25–100% tuition waiver", type: "need-merit", degreeLevel: ["bachelor", "master"], province: "all", tags: ["need-merit"], deadline: "2025-07-15", applyURL: "https://www.nust.edu.pk" },
+            { id: 13, name: "Commonwealth Scholarship (Pakistan)", funder: "Commonwealth (UK)", amount: "Full funding (UK study)", type: "merit", degreeLevel: ["master", "phd"], province: "all", tags: ["international", "merit"], deadline: "2025-10-15", applyURL: "https://cscuk.fcdo.gov.uk/apply/" },
+            { id: 14, name: "Fulbright Pakistan Scholarship", funder: "US Embassy / USEFP", amount: "Full funding (USA study)", type: "merit", degreeLevel: ["master", "phd"], province: "all", tags: ["international", "merit"], deadline: "2025-05-15", applyURL: "https://www.usefpakistan.org" },
+            { id: 15, name: "Dawood Global Foundation Scholarship", funder: "Dawood Foundation", amount: "PKR 60K–120K/year", type: "need-merit", degreeLevel: ["bachelor"], province: "all", tags: ["need-merit"], deadline: "2025-04-01", applyURL: "https://www.dawoodglobal.com/foundation" },
+        ];
+
+        function getDaysRemaining(deadlineStr) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const deadline = new Date(deadlineStr);
+            return Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+        }
+
+        const grid = document.getElementById('scholarships-grid');
+        const inputSearch = document.getElementById('f-search');
+        const inputDegree = document.getElementById('f-degree');
+        const inputType = document.getElementById('f-type');
+        const inputLocation = document.getElementById('f-location');
+
+        function renderGrid() {
+            grid.innerHTML = "";
+            let count = 0;
+
+            const q = inputSearch.value.toLowerCase();
+            const d = inputDegree.value;
+            const t = inputType.value;
+            const l = inputLocation.value;
+
+            scholarships.forEach(s => {
+                const matchQ = s.name.toLowerCase().includes(q) || s.funder.toLowerCase().includes(q);
+                const matchD = d === 'all' || s.degreeLevel.includes(d);
+                const matchT = t === 'all' || s.type.includes(t);
+                const matchL = l === 'all' || s.province === 'all' || s.province === l;
+
+                if (matchQ && matchD && matchT && matchL) {
+                    count++;
+                    const days = getDaysRemaining(s.deadline);
+                    let dlStr = new Date(s.deadline).toLocaleDateString('en-GB');
+                    if (days >= 0) {
+                        dlStr += ` (${days} days left)`;
+                    } else dlStr += ` (Closed)`;
+
+                    grid.innerHTML += `
+                        <div class="col-md-6 mb-4">
+                            <div class="card-custom">
+                                <div>
+                                    <span class="badge-type badge-${s.type}">${s.type.replace('-', ' ')}</span>
+                                    <h4 class="mb-2" style="font-size: 1.25rem; color:var(--primary-blue);">${s.name}</h4>
+                                    <p class="text-secondary mb-1"><strong>Funder:</strong> ${s.funder}</p>
+                                    <p class="scholarship-price my-3">${s.amount}</p>
+                                    <p class="scholarship-deadline mb-4"><span style="color:var(--text-secondary);">Deadline:</span> <span style="font-family:var(--font-mono);">${dlStr}</span></p>
+                                </div>
+                                <div class="mt-auto">
+                                    <a href="${s.applyURL}" target="_blank" class="btn btn-outline-primary w-100">Details & Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            if (count === 0) {
+                grid.innerHTML = `
+                    <div class="col-12 py-5 text-center">
+                        <div class="p-4" style="background-color: white; border: 1px solid var(--border-color); border-radius: 12px;">
+                            <h4 class="text-secondary">No scholarships found matching criteria.</h4>
+                            <button class="btn btn-primary mt-3" onclick="document.getElementById('reset-filters').click();">Reset Filters</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        [inputSearch, inputDegree, inputType, inputLocation].forEach(el => el.addEventListener('input', renderGrid));
+
+        document.getElementById('reset-filters').addEventListener('click', () => {
+            inputSearch.value = "";
+            inputDegree.value = "all";
+            inputType.value = "all";
+            inputLocation.value = "all";
+            renderGrid();
+        });
+
+        // initial draw
+        renderGrid();
+    </script>
+</body>
+
+</html>

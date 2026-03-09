@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakistan Student Finance & Scholarship Hub</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #1A56A0;
+            --accent-light-blue: #E8F0FA;
+            --bg-color: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555555;
+            --success-green: #1A8765;
+            --warning-orange: #B8860B;
+            --danger-red: #C0392B;
+            --border-color: #E2E8F0;
+            
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6, .logo {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            color: var(--primary-blue) !important;
+            font-size: 1.5rem;
+        }
+        .nav-link {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Components */
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            padding: 12px 24px;
+            border: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: #144380; /* darken 10% */
+            color: white;
+        }
+        .btn-outline-primary {
+            background-color: white;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .stat-bar {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1rem 0;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .card-custom {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 24px;
+            border: none;
+            height: 100%;
+            transition: transform 0.2s ease;
+        }
+        .card-custom:hover {
+            transform: translateY(-4px);
+        }
+        .card-custom h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .card-custom p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .badge-type {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .badge-need-based { background-color: var(--accent-light-blue); color: var(--primary-blue); }
+        .badge-merit { background-color: #E6F4EA; color: var(--success-green); }
+        .badge-loan { background-color: #FFF3CD; color: var(--warning-orange); }
+        .badge-need-merit { background-color: #F3E8FF; color: #6B21A8; }
+
+        .scholarship-price {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin: 10px 0;
+        }
+        .scholarship-deadline {
+            color: var(--danger-red);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        /* AdSense Box */
+        .adsense-placeholder {
+            background-color: #E2E8F0;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 8px;
+            font-weight: 500;
+            max-width: 900px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1A1A2E;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        footer a {
+            color: #A0AEC0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s ease;
+        }
+        footer a:hover {
+            color: white;
+        }
+        .footer-tagline {
+            color: #A0AEC0;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-disclaimer {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2D3748;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="index.html">PakStudentFinance</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-toggle="target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="scholarships.html">Scholarships</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="eligibility-checker.html">Eligibility Checker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cgpa-calculator.html">CGPA Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="loan-calculator.html">Loan Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deadlines.html">Deadlines</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="py-5 text-center">
+        <div class="container py-4">
+            <h1 class="display-4 mb-3" style="color: var(--primary-blue);">Find Every Scholarship You Qualify For — Free</h1>
+            <p class="lead text-secondary mb-4 mx-auto" style="max-width: 700px;">Pakistan's first free scholarship eligibility checker. Enter your CGPA, see your matches instantly.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="eligibility-checker.html" class="btn btn-primary">Check My Eligibility &rarr;</a>
+                <a href="scholarships.html" class="btn btn-outline-primary">Browse All Scholarships</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADSENSE SLOT: Replace with your AdSense code after approval -->
+    <div class="container">
+        <div class="adsense-placeholder">
+            Advertisement
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stat-bar my-4">
+        <div class="container">
+            <div class="row text-center gy-2">
+                <div class="col-sm-3 col-6">15+ Scholarships Listed</div>
+                <div class="col-sm-3 col-6">PKR 40K–Full Funding</div>
+                <div class="col-sm-3 col-6">Updated Monthly</div>
+                <div class="col-sm-3 col-6">100% Free</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="py-5" style="background-color: white;">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Free Tools</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom">
+                        <h3 class="text-primary">Eligibility Checker</h3>
+                        <p>Enter your profile and find exactly which scholarships you qualify for.</p>
+                        <a href="eligibility-checker.html" class="btn btn-outline-primary w-100">Use Tool &rarr;</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom">
+                        <h3 class="text-primary">Loan Calculator</h3>
+                        <p>Calculate EMIs and interest for education loans in Pakistan.</p>
+                        <a href="loan-calculator.html" class="btn btn-outline-primary w-100">Use Tool &rarr;</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom">
+                        <h3 class="text-primary">CGPA Calculator</h3>
+                        <p>Calculate your CGPA, convert grades, and plan your target goals.</p>
+                        <a href="cgpa-calculator.html" class="btn btn-outline-primary w-100">Use Tool &rarr;</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom">
+                        <h3 class="text-primary">Deadline Tracker</h3>
+                        <p>Never miss an application deadline again. Track upcoming dates easily.</p>
+                        <a href="deadlines.html" class="btn btn-outline-primary w-100">Use Tool &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Scholarships -->
+    <section class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">Featured Scholarships</h2>
+                <a href="scholarships.html" class="text-decoration-none fw-bold" style="color: var(--primary-blue);">View All &rarr;</a>
+            </div>
+            <div class="row g-4" id="featured-scholarships-container">
+                <!-- Data will be loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="py-5" style="background-color: white;">
+        <div class="container">
+            <h2 class="text-center mb-5">How It Works</h2>
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle mb-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">1</div>
+                    <h4>Enter your details</h4>
+                    <p class="text-secondary">Input your CGPA, degree level, and province in our eligibility checker.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle mb-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">2</div>
+                    <h4>See your matches</h4>
+                    <p class="text-secondary">Instantly view all the scholarships and loans you actually qualify for.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle mb-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">3</div>
+                    <h4>Apply directly</h4>
+                    <p class="text-secondary">Follow our verified links to apply directly on the funder's official website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADSENSE SLOT: Replace with your AdSense code after approval -->
+    <div class="container mt-4">
+        <div class="adsense-placeholder">
+            Advertisement
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="logo mb-3">PakStudentFinance</h3>
+                    <p class="footer-tagline">Free tools for Pakistani students. No signup required.</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <a href="index.html">Home</a>
+                    <a href="scholarships.html">All Scholarships</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Tools</h5>
+                    <a href="eligibility-checker.html">Eligibility Checker</a>
+                    <a href="cgpa-calculator.html">CGPA Calculator</a>
+                    <a href="loan-calculator.html">Loan Calculator</a>
+                    <a href="deadlines.html">Deadlines</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Legal</h5>
+                    <a href="about.html">About</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-disclaimer text-center">
+                This platform provides general information only. Always verify details directly with scholarship providers.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const scholarships = [
+            { id: 1, name: "HEC Need-Based Scholarship", funder: "Higher Education Commission (HEC)", amount: "PKR 40,000–80,000/year", type: "need-based", deadline: "2025-03-31", applyURL: "https://www.hec.gov.pk/english/scholarshipsgrants/Pages/NBS.aspx" },
+            { id: 2, name: "HEC Merit Scholarship (USEFP)", funder: "HEC / USEFP", amount: "PKR 20,000–50,000/semester", type: "merit", deadline: "2025-04-15", applyURL: "https://www.hec.gov.pk" },
+            { id: 3, name: "Punjab Educational Endowment Fund (PEEF)", funder: "Government of Punjab", amount: "PKR 30,000–60,000/year", type: "need-based", deadline: "2025-05-01", applyURL: "https://peef.org.pk" },
+            { id: 4, name: "Sindh Education Foundation Scholarship", funder: "Government of Sindh", amount: "PKR 25,000–45,000/year", type: "need-based", deadline: "2025-04-30", applyURL: "https://sef.org.pk" },
+            { id: 5, name: "PM's Youth Business & Agriculture Loan", funder: "Government of Pakistan", amount: "PKR 100K–500K (loan)", type: "loan", deadline: "2025-06-30", applyURL: "https://pmyp.gov.pk" },
+            { id: 6, name: "Aga Khan Foundation Scholarship", funder: "Aga Khan Foundation", amount: "Full tuition + stipend", type: "need-merit", deadline: "2025-03-15", applyURL: "https://www.akdn.org" },
+            { id: 7, name: "Ehsaas Undergraduate Scholarship", funder: "Government of Pakistan", amount: "PKR 20,000/sem + acc", type: "need-based", deadline: "2025-08-01", applyURL: "https://ehsaas.nadra.gov.pk" },
+            { id: 8, name: "Balochistan Educational Scholarship", funder: "Gov of Balochistan", amount: "PKR 30,000–70,000/year", type: "need-based", deadline: "2025-05-15", applyURL: "https://www.balochistan.gov.pk" },
+            { id: 9, name: "LUMS National Outreach Program", funder: "LUMS University", amount: "Full tuition + laptop", type: "need-based", deadline: "2025-02-28", applyURL: "https://nop.lums.edu.pk" },
+            { id: 10, name: "IBA Karachi Need-Based Scholarship", funder: "IBA Karachi", amount: "50–100% tuition waiver", type: "need-based", deadline: "2025-03-20", applyURL: "https://www.iba.edu.pk/financial_aid.php" },
+            { id: 11, name: "KPK Higher Education Scholarship", funder: "Government of KPK", amount: "PKR 30,000–60,000/year", type: "merit", deadline: "2025-06-01", applyURL: "https://www.kpkscholarships.com" },
+            { id: 12, name: "NUST Financial Aid Scholarship", funder: "NUST University", amount: "25–100% tuition waiver", type: "need-merit", deadline: "2025-07-15", applyURL: "https://www.nust.edu.pk" },
+            { id: 13, name: "Commonwealth Scholarship (Pakistan)", funder: "Commonwealth (UK)", amount: "Full funding (UK study)", type: "merit", deadline: "2025-10-15", applyURL: "https://cscuk.fcdo.gov.uk/apply/" },
+            { id: 14, name: "Fulbright Pakistan Scholarship", funder: "US Embassy / USEFP", amount: "Full funding (USA study)", type: "merit", deadline: "2025-05-15", applyURL: "https://www.usefpakistan.org" },
+            { id: 15, name: "Dawood Global Foundation Scholarship", funder: "Dawood Foundation", amount: "PKR 60K–120K/year", type: "need-merit", deadline: "2025-04-01", applyURL: "https://www.dawoodglobal.com/foundation" }
+        ];
+
+        function getDaysRemaining(deadlineStr) {
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            const deadline = new Date(deadlineStr);
+            const diff = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+            return diff;
+        }
+
+        window.onload = function() {
+            // Sort by deadline and pick first 3
+            const sortedScholarships = [...scholarships].sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+            const featuredList = sortedScholarships.slice(0, 3);
+            const container = document.getElementById("featured-scholarships-container");
+            container.innerHTML = "";
+
+            featuredList.forEach(item => {
+                const daysObj = getDaysRemaining(item.deadline);
+                let deadlineStr = `Closes ${new Date(item.deadline).toLocaleDateString('en-GB')} (${daysObj > 0 ? daysObj + " days left" : "Ended"})`;
+
+                const col = document.createElement("div");
+                col.className = "col-md-4";
+                col.innerHTML = `
+                    <div class="card-custom">
+                        <span class="badge-type badge-${item.type}">${item.type.replace('-', ' ').toUpperCase()}</span>
+                        <h3>${item.name}</h3>
+                        <p class="mb-1"><strong>Funder:</strong> ${item.funder}</p>
+                        <p class="scholarship-price">${item.amount}</p>
+                        <div class="scholarship-deadline">${deadlineStr}</div>
+                        <a href="${item.applyURL}" target="_blank" class="btn btn-outline-primary w-100">Apply Now &rarr;</a>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        };
+    </script>
+</body>
+</html>
