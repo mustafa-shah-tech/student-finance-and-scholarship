@@ -1,0 +1,302 @@
+/* Result box styles */
+.result-box {
+    background-color: var(--accent-light-blue);
+    border-left: 4px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.warning-box {
+    background-color: #FFF3CD;
+    border-left: 4px solid var(--warning-orange);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.error-box {
+    background-color: #FDECEA;
+    border-left: 4px solid var(--danger-red);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.result-box h4 {
+    margin-bottom: 0px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+}
+
+/* Scholarship card styles */
+.scholarship-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.scholarship-price {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin: 10px 0;
+}
+
+.scholarship-deadline {
+    color: var(--danger-red);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+/* Deadline row styles */
+.deadline-row {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background: white;
+    transition: transform 0.2s;
+}
+
+.deadline-row:hover {
+    transform: translateX(5px);
+    border-color: var(--primary-blue);
+}
+
+@media (min-width: 768px) {
+    .deadline-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.deadline-info {
+    flex: 1;
+}
+
+.deadline-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 4px;
+}
+
+.deadline-funder {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.deadline-amount {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.deadline-timer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    min-width: 250px;
+    justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+    .deadline-timer {
+        justify-content: flex-end;
+        margin-top: 0;
+    }
+}
+
+.days-badge {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+}
+
+.deadline-urgent {
+    background-color: #FDECEA;
+    color: var(--danger-red);
+    border: 1px solid #F5C6CB;
+}
+
+.deadline-soon {
+    background-color: #FFF3CD;
+    color: var(--warning-orange);
+    border: 1px solid #FFEEBA;
+}
+
+.deadline-ok {
+    background-color: #E6F4EA;
+    color: var(--success-green);
+    border: 1px solid #C3E6CB;
+}
+
+.deadline-expired {
+    background-color: #E2E8F0;
+    color: var(--text-secondary);
+    border: 1px solid #CBD5E0;
+}
+
+/* Loan calculator result panel */
+input[type=range] {
+    width: 100%;
+    margin: 15px 0;
+    accent-color: var(--primary-blue);
+    height: 6px;
+}
+
+.result-panel {
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.result-panel h4 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.big-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    margin: 10px 0;
+    word-break: break-word;
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.breakdown-row:last-child {
+    border-bottom: none;
+}
+
+.breakdown-row span {
+    font-family: var(--font-mono);
+    font-weight: 500;
+}
+
+.visual-bar-container {
+    height: 12px;
+    border-radius: 6px;
+    display: flex;
+    overflow: hidden;
+    margin: 20px 0 10px 0;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.visual-bar-principal {
+    background-color: #4ADE80;
+    height: 100%;
+}
+
+.visual-bar-interest {
+    background-color: #F87171;
+    height: 100%;
+}
+
+.legend {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.9;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.disclaimer-box {
+    background-color: #FFF3CD;
+    border-left: 4px solid var(--warning-orange);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #664d03;
+}
+
+/* CGPA calculator styles */
+.course-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.course-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.result-value-txt {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Filter button styles */
+.filter-btn {
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 6px 16px;
+    background: white;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Email signup styles */
+.email-signup {
+    background-color: var(--accent-light-blue);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}

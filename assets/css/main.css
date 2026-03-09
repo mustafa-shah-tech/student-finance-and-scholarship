@@ -1,0 +1,185 @@
+:root {
+    --primary-blue: #1A56A0;
+    --accent-light-blue: #E8F0FA;
+    --bg-color: #F8FAFC;
+    --card-bg: #FFFFFF;
+    --text-primary: #1A1A2E;
+    --text-secondary: #555555;
+    --success-green: #1A8765;
+    --warning-orange: #B8860B;
+    --danger-red: #C0392B;
+    --border-color: #E2E8F0;
+    
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+}
+.navbar-brand {
+    color: var(--primary-blue) !important;
+    font-size: 1.5rem;
+}
+.nav-link {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-left: 1rem;
+}
+.nav-link:hover {
+    color: var(--primary-blue);
+}
+
+/* Form controls */
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.form-control, .form-select {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: var(--font-body);
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(26, 86, 160, 0.25);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 8px;
+    padding: 12px 24px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-primary:hover {
+    background-color: #144380;
+    color: white;
+}
+.btn-outline-primary {
+    background-color: white;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-outline-primary:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+.btn-outline-danger {
+    border: 2px solid var(--danger-red);
+    color: var(--danger-red);
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+}
+.btn-outline-danger:hover {
+    background-color: var(--danger-red);
+    color: white;
+}
+
+/* Cards */
+.card-custom {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 24px;
+    border: none;
+    height: 100%;
+    transition: transform 0.2s ease;
+    margin-bottom: 24px;
+}
+.card-custom:hover {
+    transform: translateY(-4px);
+}
+.card-custom h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+.card-custom p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Badges */
+.badge-type {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+.badge-need-based { background-color: var(--accent-light-blue); color: var(--primary-blue); }
+.badge-merit { background-color: #E6F4EA; color: var(--success-green); }
+.badge-loan { background-color: #FFF3CD; color: var(--warning-orange); }
+.badge-need-merit { background-color: #F3E8FF; color: #6B21A8; }
+.badge-full-scholarship { background-color: #FEF3C7; color: #D97706; }
+
+/* AdSense placeholder */
+.adsense-placeholder {
+    background-color: #E2E8F0;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 40px 20px;
+    margin: 40px auto;
+    border-radius: 8px;
+    font-weight: 500;
+    max-width: 900px;
+}
+
+/* Footer */
+footer {
+    background-color: #1A1A2E;
+    color: white;
+    padding: 3rem 0;
+    margin-top: 4rem;
+}
+footer a {
+    color: #A0AEC0;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+}
+footer a:hover {
+    color: white;
+}
+.footer-tagline {
+    color: #A0AEC0;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+.footer-disclaimer {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #2D3748;
+}
