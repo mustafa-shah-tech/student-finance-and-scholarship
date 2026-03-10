@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KM79Q5PRD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-0KM79Q5PRD');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Scholarships in Pakistan 2026 — HEC, PEEF, Fulbright & More — PakStudentFinance</title>
-    <meta name="description" content="Browse 15+ scholarships for Pakistani students including HEC, PEEF, Fulbright, Commonwealth and more. Filter by degree, province and type.">
-    <meta name="keywords" content="scholarships for Pakistani students 2026, HEC scholarship, PEEF scholarship, Fulbright Pakistan, Commonwealth scholarship Pakistan, free scholarship Pakistan">
+    <meta name="description"
+        content="Browse 15+ scholarships for Pakistani students including HEC, PEEF, Fulbright, Commonwealth and more. Filter by degree, province and type.">
+    <meta name="keywords"
+        content="scholarships for Pakistani students 2026, HEC scholarship, PEEF scholarship, Fulbright Pakistan, Commonwealth scholarship Pakistan, free scholarship Pakistan">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="All Scholarships Pakistan 2026 — HEC, PEEF, Fulbright & More — PakStudentFinance">
-    <meta property="og:description" content="Browse 15+ scholarships for Pakistani students. Filter by degree level, province and type. Updated for 2026.">
+    <meta property="og:title"
+        content="All Scholarships Pakistan 2026 — HEC, PEEF, Fulbright & More — PakStudentFinance">
+    <meta property="og:description"
+        content="Browse 15+ scholarships for Pakistani students. Filter by degree level, province and type. Updated for 2026.">
     <meta property="og:url" content="https://mustafa-shah-tech.github.io/student-finance-hub/scholarships.html">
     <meta property="og:image" content="https://mustafa-shah-tech.github.io/student-finance-hub/assets/img/favicon.svg">
     <link rel="canonical" href="https://mustafa-shah-tech.github.io/student-finance-hub/scholarships.html">
@@ -20,7 +34,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,6 +47,7 @@
 
     <script src="assets/js/theme.js"></script>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
@@ -46,8 +63,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="scholarships.html"
-                            >Scholarships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="scholarships.html">Scholarships</a></li>
                     <li class="nav-item"><a class="nav-link" href="eligibility-checker.html">Eligibility Checker</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="cgpa-calculator.html">CGPA Calculator</a></li>
@@ -64,7 +80,7 @@
     <div class="container py-4 mb-5">
         <div class="row mb-5">
             <div class="col-12 text-center">
-                <h1 >All Scholarships</h1>
+                <h1>All Scholarships</h1>
                 <p class="text-secondary mx-auto" style="max-width: 600px">Browse our full database of financial aid
                     opportunities for Pakistani students. Updated regularly.</p>
             </div>
@@ -75,11 +91,11 @@
                 <div class="card-custom" style="padding: 24px; height: auto; position: sticky; top: 100px">
                     <h5 class="mb-3">Filters</h5>
                     <div class="mb-3">
-                        <label class="form-label text-secondary" >Search Name</label>
+                        <label class="form-label text-secondary">Search Name</label>
                         <input type="text" class="form-control" id="f-search" placeholder="e.g. HEC, Merit...">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-secondary" >Degree Level</label>
+                        <label class="form-label text-secondary">Degree Level</label>
                         <select class="form-select" id="f-degree">
                             <option value="all">Every Level</option>
                             <option value="bachelor">Bachelor's</option>
@@ -88,7 +104,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-secondary" >Type</label>
+                        <label class="form-label text-secondary">Type</label>
                         <select class="form-select" id="f-type">
                             <option value="all">Any Type</option>
                             <option value="need">Need-Based</option>
@@ -97,7 +113,7 @@
                         </select>
                     </div>
                     <div class="mb-4">
-                        <label class="form-label text-secondary" >Location</label>
+                        <label class="form-label text-secondary">Location</label>
                         <select class="form-select" id="f-location">
                             <option value="all">All Pakistan / International</option>
                             <option value="punjab">Punjab</option>
@@ -108,7 +124,7 @@
                     </div>
                     <button class="btn btn-primary w-100" id="reset-filters">Reset Filters</button>
                     <div class="mt-4 pt-3 border-top text-center">
-                        <p >Want personalized results matching
+                        <p>Want personalized results matching
                             your profile?</p>
                         <a href="eligibility-checker.html" class="btn btn-outline-primary btn-sm w-100">Use Eligibility
                             Checker</a>
@@ -132,7 +148,7 @@
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-6">
                     <h3 class="logo mb-3">PakStudentFinance</h3>
-                    <p >Free tools for Pakistani students. No signup
+                    <p>Free tools for Pakistani students. No signup
                         required.</p>
                 </div>
                 <!-- Standard Footer -->
@@ -160,4 +176,5 @@
     <script src="assets/js/scholarships-data.js"></script>
     <script src="assets/js/scholarships.js"></script>
 </body>
+
 </html>
