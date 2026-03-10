@@ -78,7 +78,7 @@ function renderScholarshipCard(s) {
             <p class="scholarship-price my-2">${s.amount}</p>
             <p class="scholarship-deadline my-2">${deadlineStr}</p>
             <div class="mt-3">
-                <a href="${s.applyURL}" target="_blank" class="btn btn-outline-primary w-100 py-2" style="border-radius:6px; padding: 6px 12px; font-size:0.9rem;">View & Apply</a>
+                <a href="${s.applyURL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary w-100 py-2" style="border-radius:6px; padding: 6px 12px; font-size:0.9rem;">View & Apply</a>
             </div>
         </div>
     `;

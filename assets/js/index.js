@@ -32,7 +32,7 @@ window.onload = function () {
                 <p class="mb-1"><strong>Funder:</strong> ${item.funder}</p>
                 <p class="scholarship-price">${item.amount}</p>
                 <div class="scholarship-deadline">${deadlineStr}</div>
-                <a href="${item.applyURL}" target="_blank" class="btn btn-outline-primary w-100">Apply Now &rarr;</a>
+                <a href="${item.applyURL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary w-100">Apply Now &rarr;</a>
             </div>
         `;
         container.appendChild(col);

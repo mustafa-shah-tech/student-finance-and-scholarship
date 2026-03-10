@@ -51,7 +51,7 @@ function renderGrid() {
                             <p class="scholarship-deadline mb-4"><span style="color:var(--text-secondary);">Deadline:</span> <span style="font-family:var(--font-mono);">${dlStr}</span></p>
                         </div>
                         <div class="mt-auto">
-                            <a href="${s.applyURL}" target="_blank" class="btn btn-outline-primary w-100">Details & Apply</a>
+                            <a href="${s.applyURL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary w-100">Details & Apply</a>
                         </div>
                     </div>
                 </div>

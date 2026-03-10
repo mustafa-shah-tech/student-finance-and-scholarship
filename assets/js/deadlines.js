@@ -59,7 +59,7 @@ function renderList(filter = 'all') {
                     <div class="deadline-timer">
                         <div class="text-end me-3">
                             <div class="fw-bold" style="color:var(--text-primary);">${new Date(s.deadline).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
-                            <a href="${s.applyURL}" target="_blank" class="text-decoration-none" style="font-size:0.85rem; color:var(--primary-blue);">Apply Info &rarr;</a>
+                            <a href="${s.applyURL}" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="font-size:0.85rem; color:var(--primary-blue);">Apply Info &rarr;</a>
                         </div>
                         <div class="days-badge ${badgeClass}">${s.daysRemaining} days left</div>
                     </div>
