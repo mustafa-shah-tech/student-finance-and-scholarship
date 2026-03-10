@@ -42,10 +42,4 @@
     <priority>0.5</priority>
     <changefreq>yearly</changefreq>
   </url>
-  <url>
-    <loc>https://mustafa-shah-tech.github.io/student-finance-hub/privacy-policy.html</loc>
-    <lastmod>2026-03-10</lastmod>
-    <priority>0.5</priority>
-    <changefreq>yearly</changefreq>
-  </url>
 </urlset>
