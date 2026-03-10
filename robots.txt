@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /assets/js/
-Sitemap: https://mustafa-shah-tech.github.io/student-finance-hub/sitemap.xml
+Sitemap: https://mustafa-shah-tech.github.io/student-finance-and-scholarship/sitemap.xml
 

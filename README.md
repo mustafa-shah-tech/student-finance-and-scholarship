@@ -2,8 +2,8 @@
   <h1>Student Finance & Scholarship</h1>
   <p><strong>Pakistan Student Finance & Scholarship Hub</strong></p>
 
-  [![Live Site](https://img.shields.io/badge/Live-Site-success?style=for-the-badge&logo=vercel)](https://mustafa-shah-tech.github.io/student-finance-hub)
-  [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-181717?style=for-the-badge&logo=github)](https://mustafa-shah-tech.github.io/student-finance-hub)
+  [![Live Site](https://img.shields.io/badge/Live-Site-success?style=for-the-badge&logo=vercel)](https://mustafa-shah-tech.github.io/student-finance-and-scholarship)
+  [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-181717?style=for-the-badge&logo=github)](https://mustafa-shah-tech.github.io/student-finance-and-scholarship)
   [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
   [![Bootstrap 5](https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
   [![Vanilla JS](https://img.shields.io/badge/Vanilla_JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -22,7 +22,7 @@ The platform is strictly free to use. There are no paywalls, no hidden fees, and
 
 ## Live Demo
 
-🚀 **[View the Live Site Here](https://mustafa-shah-tech.github.io/student-finance-hub)**
+🚀 **[View the Live Site Here](https://mustafa-shah-tech.github.io/student-finance-and-scholarship)**
 
 Visitors can immediately start using the tools, inputting their CGPA and degree level to find matching scholarships, calculating loan installments, tracking upcoming application deadlines, or browsing the full database of financial aid opportunities.
 
@@ -68,8 +68,8 @@ Because this platform uses a zero-build-tool architecture, running it locally is
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/mustafa-shah-tech/student-finance-hub.git
-    cd student-finance-hub
+    git clone https://github.com/mustafa-shah-tech/student-finance-and-scholarship.git
+    cd student-finance-and-scholarship
     ```
 2.  **Open any file:**
     Simply double-click `index.html` (or any other `.html` file) in your file explorer to open it directly in your web browser. 
